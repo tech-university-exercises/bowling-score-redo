@@ -1,5 +1,19 @@
 const frameLength = 10;
 
+function validateInputType(scoreArr) {
+  if (Array.isArray(scoreArr) === false) {
+    return false;
+  }
+  for (let i = 0; i < scoreArr.length; i += 1) {
+    const item = scoreArr[i];
+    if (!(typeof item === 'number' && item < Infinity && item >= 0 && Math.round(item) === item)) {
+      console.log('Check the data type of the input');
+      return false;
+    }
+  }
+  return true;
+}
+
 function turnToFrame(scoreInput) {
   const frameScore = [];
   for (let i = 0; i < frameLength - 1; i += 1) {
@@ -7,7 +21,11 @@ function turnToFrame(scoreInput) {
       if (scoreInput[(i + 1) * 2] === 10) {
         frameScore.push(20 + scoreInput[(2 * (i + 2))]);
       } else { frameScore.push(10 + scoreInput[2 * (i + 1)] + scoreInput[(2 * (i + 1)) + 1]); }
-    } else frameScore.push(scoreInput[2 * i] + scoreInput[(2 * i) + 1]);
+    } else if ((scoreInput[i * 2] + scoreInput[(2 * i) + 1]) === 10) {
+      frameScore.push(10 + scoreInput[2 * (i + 1)]);
+    } else {
+      frameScore.push(scoreInput[2 * i] + scoreInput[(2 * i) + 1]);
+    }
   }
   frameScore[frameLength - 1] = scoreInput[scoreInput.length - 1]
   + scoreInput[scoreInput.length - 2] + scoreInput[scoreInput.length - 3];
@@ -26,10 +44,11 @@ function unifyInput(inputArr) {
 }
 
 function calScore(scoreArr) {
+  if (validateInputType(scoreArr) === false) {
+    return false;
+  }
   const scoreInput = unifyInput(scoreArr);
-  // console.log(scoreInput);
   const frameScore = turnToFrame(scoreInput);
-  // console.log(frameScore);
   const score = frameScore.reduce((total, throwScore) => total + throwScore);
   return score;
 }

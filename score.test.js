@@ -53,3 +53,39 @@ describe('Cases with consequtive strikes.', () => {
     });
   }
 });
+
+describe('Cases with spares.', () => {
+  {
+    const scoreInput = [3, 7, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6];
+    test('These throw should return the score as 94.', () => {
+      expect(funObj.calScore(scoreInput)).toEqual(94);
+    });
+  }
+  {
+    const scoreInput = [3, 7, 3, 7, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6];
+    test('These throw should return the score as 98.', () => {
+      expect(funObj.calScore(scoreInput)).toEqual(98);
+    });
+  }
+});
+
+describe('Cases with spares, strikes and normal throws.', () => {
+  {
+    const scoreInput = [3, 7, 10, 3, 0, 4, 5, 0, 10, 10, 3, 2, 3, 1, 10, 10, 10, 10];
+    test('These throw should return the score as 149.', () => {
+      expect(funObj.calScore(scoreInput)).toEqual(149);
+    });
+  }
+  {
+    const scoreInput = [10, 0, 10, 10, 0, 10, 10, 0, 10, 10, 0, 10, 10, 0, 10, 4];
+    test('These throw should return the score as 198.', () => {
+      expect(funObj.calScore(scoreInput)).toEqual(194);
+    });
+  }
+  {
+    const scoreInput = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    test('These throw should return the score as 0.', () => {
+      expect(funObj.calScore(scoreInput)).toEqual(0);
+    });
+  }
+});
