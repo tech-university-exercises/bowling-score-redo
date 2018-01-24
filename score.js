@@ -44,13 +44,16 @@ function unifyInput(inputArr) {
 }
 
 function calScore(scoreArr) {
-  if (validateInputType(scoreArr) === false) {
-    return false;
-  }
+  if (validateInputType(scoreArr) === false) { return false; }
   const scoreInput = unifyInput(scoreArr);
+  if (scoreInput.length !== 21) {
+    if (scoreInput.length > 21) { console.log('Too many throws'); } else { console.log('Too few throws'); } return false;
+  }
   const frameScore = turnToFrame(scoreInput);
   const score = frameScore.reduce((total, throwScore) => total + throwScore);
   return score;
 }
 
-module.exports = { calScore, unifyInput, turnToFrame };
+module.exports = {
+  calScore, unifyInput, turnToFrame, validateInputType,
+};
