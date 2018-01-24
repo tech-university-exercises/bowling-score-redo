@@ -37,8 +37,8 @@ describe('Given valid input, function should covert it to an array of length 21'
       expect(funObj.unifyInput(scoreInput).length).toEqual(21);
     });
     test('These throw should return the same array as no strike is there.', () => {
-      expect(funObj.unifyInput(scoreInput)).toEqual([3, 0, 3, 6, 3, 0, 3, 6, 3, 6, 3, 0, 3, 6, 3, 6,
-        3, 6, 10, 10, 10]);
+      expect(funObj.unifyInput(scoreInput)).toEqual([0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0,
+        10, 0, 10, 0, 10, 0, 10, 10]);
     });
   }
 });

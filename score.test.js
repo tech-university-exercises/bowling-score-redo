@@ -41,15 +41,15 @@ describe('Cases with consequtive strikes.', () => {
     });
   }
   {
-    const scoreInput = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
-    test('These throw should return the score as 300.', () => {
-      expect(funObj.calScore(scoreInput)).toEqual(300);
-    });
-  }
-  {
     const scoreInput = [0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 10];
     test('These throw should return the score as 110 as spare logic has not been done.', () => {
       expect(funObj.calScore(scoreInput)).toEqual(110);
+    });
+  }
+  {
+    const scoreInput = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+    test('These throw should return the score as 300.', () => {
+      expect(funObj.calScore(scoreInput)).toEqual(300);
     });
   }
 });
