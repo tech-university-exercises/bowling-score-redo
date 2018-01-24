@@ -15,7 +15,7 @@ function unifyInput(inputArr) {
   const uniformLengthArray = [];
   for (let i = 0; i < inputArr.length; i += 1) {
     uniformLengthArray.push(inputArr[i]);
-    if (inputArr[i] === 10) { uniformLengthArray.push(0); }
+    if (inputArr[i] === 10 && uniformLengthArray.length <= 18) { uniformLengthArray.push(0); }
   }
   if (uniformLengthArray.length === frameLength * 2) { uniformLengthArray.push(0); }
   return uniformLengthArray;
@@ -24,9 +24,8 @@ function unifyInput(inputArr) {
 function calScore(scoreArr) {
   const scoreInput = unifyInput(scoreArr);
   const frameScore = turnToFrame(scoreInput);
-  console.log(frameScore);
   const score = frameScore.reduce((total, throwScore) => total + throwScore);
   return score;
 }
 
-module.exports = calScore;
+module.exports = { calScore, unifyInput, turnToFrame };
