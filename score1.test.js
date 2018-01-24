@@ -26,5 +26,19 @@ describe('Given valid input, function should covert it to an array of length 21'
     test('A normal game with no strikes or spare.', () => {
       expect(funObj.unifyInput(scoreInput).length).toEqual(21);
     });
+    test('A normal game with no strikes or spare.', () => {
+      expect(funObj.unifyInput(scoreInput)).toEqual([3, 0, 3, 6, 3, 0, 3, 6, 3, 6, 3, 0, 3, 6, 3, 6,
+        3, 6, 10, 10, 10]);
+    });
+  }
+  {
+    const scoreInput = [0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 10];
+    test('These throw should return the same array as no strike is there.', () => {
+      expect(funObj.unifyInput(scoreInput).length).toEqual(21);
+    });
+    test('These throw should return the same array as no strike is there.', () => {
+      expect(funObj.unifyInput(scoreInput)).toEqual([3, 0, 3, 6, 3, 0, 3, 6, 3, 6, 3, 0, 3, 6, 3, 6,
+        3, 6, 10, 10, 10]);
+    });
   }
 });

@@ -32,3 +32,24 @@ describe('Cases with last throw having 3 throws', () => {
     });
   }
 });
+
+describe('Cases with consequtive strikes.', () => {
+  {
+    const scoreInput = [3, 6, 10, 10, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 10, 3, 7, 3];
+    test('These throw should return the score as 129.', () => {
+      expect(funObj.calScore(scoreInput)).toEqual(129);
+    });
+  }
+  {
+    const scoreInput = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+    test('These throw should return the score as 300.', () => {
+      expect(funObj.calScore(scoreInput)).toEqual(300);
+    });
+  }
+  {
+    const scoreInput = [0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 10];
+    test('These throw should return the score as 110 as spare logic has not been done.', () => {
+      expect(funObj.calScore(scoreInput)).toEqual(110);
+    });
+  }
+});
