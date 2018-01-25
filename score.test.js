@@ -89,3 +89,18 @@ describe('Cases with spares, strikes and normal throws.', () => {
     });
   }
 });
+
+describe('some random test cases.', () => {
+  {
+    const scoreInput = [3, 6, 10, 7, 2, 5, 5, 2, 5, 4, 5, 7, 1, 10, 10, 4, 5];
+    test('when input scores contains some strikes and spares', () => {
+      expect(funObj.calScore(scoreInput)).toBe(125);
+    });
+  }
+  {
+    const scoreInput = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0];
+    test('when input contains only strikes', () => {
+      expect(funObj.calScore(scoreInput)).toBe(290);
+    });
+  }
+});

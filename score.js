@@ -18,7 +18,7 @@ function turnToFrame(scoreInput) {
   const frameScore = [];
   for (let i = 0; i < frameLength - 1; i += 1) {
     if (scoreInput[i * 2] === 10) {
-      if (scoreInput[(i + 1) * 2] === 10) {
+      if (scoreInput[(i + 1) * 2] === 10 && (i < frameLength - 2)) {
         frameScore.push(20 + scoreInput[(2 * (i + 2))]);
       } else { frameScore.push(10 + scoreInput[2 * (i + 1)] + scoreInput[(2 * (i + 1)) + 1]); }
     } else if ((scoreInput[i * 2] + scoreInput[(2 * i) + 1]) === 10) {
@@ -49,7 +49,9 @@ function calScore(scoreArr) {
   if (scoreInput.length !== 21) {
     if (scoreInput.length > 21) { console.log('Too many throws'); } else { console.log('Too few throws'); } return false;
   }
+  // console.log(scoreInput);
   const frameScore = turnToFrame(scoreInput);
+  // console.log(frameScore);
   const score = frameScore.reduce((total, throwScore) => total + throwScore);
   return score;
 }

@@ -85,4 +85,10 @@ describe('Cases with insuffient or more than required output.', () => {
       expect(funObj.calScore(scoreInput)).toEqual(false);
     });
   }
+  {
+    const scoreInput = [];
+    test('These throw should return the score as false.', () => {
+      expect(funObj.calScore(scoreInput)).toEqual(false);
+    });
+  }
 });
