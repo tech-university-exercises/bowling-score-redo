@@ -14,6 +14,12 @@ describe('Inputs of invalid datatypes', () => {
     });
   }
   {
+    const scoreInput = [3, 0, 3, 6, 3, 0, 3, 6, 3, 6, 3, 0, 3, 6, 3, 6, -3, 0, 10, 10, 10];
+    test('string will should return a false value.', () => {
+      expect(funObj.validateInputType(scoreInput)).toEqual(false);
+    });
+  }
+  {
     const scoreInput = 'Anmol';
     test('single string will return a false value.', () => {
       expect(funObj.validateInputType(scoreInput)).toEqual(false);
